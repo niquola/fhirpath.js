@@ -28,7 +28,9 @@
     "node": ">=8.9.0"
   },
   "scripts": {
+    "installAntlr": "curl -L http://www.antlr.org/download/antlr-4.7.1-complete.jar > antlr-4.7.1-complete.jar",
     "generateParser": "cd src/parser; rm -rf ./generated/*; java -Xmx500M -cp \"../../antlr-4.7.1-complete.jar:$CLASSPATH\" org.antlr.v4.Tool -o generated -Dlanguage=JavaScript FHIRPath.g4",
+    "generateParserMapping": "cd src/parser; rm -rf ./mapping/*; java -Xmx500M -cp \"../../antlr-4.7.1-complete.jar:$CLASSPATH\" org.antlr.v4.Tool -o mapping -Dlanguage=JavaScript mapping.g4",
     "build:browser": "cp LICENSE.md browser-build && cd browser-build && webpack && rm -f fhirpath.zip && zip fhirpath.zip LICENSE.md fhirpath.min.js && rm LICENSE.md",
     "build": "webpack && npm run build:browser",
     "test:unit": "jest",
